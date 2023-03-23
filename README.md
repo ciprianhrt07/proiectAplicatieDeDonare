@@ -9,3 +9,4 @@
 values(1 ,  true , "admin", "ROLE_ADMIN" , "admin" ); 
   -> restul userilor se pot crea sterge sau adauga ulterior, doar adminul trebuie inserat manual.
   GL , HF.
+  -> username-ul trebuie sa fie diferit pentru orice utilizator.
