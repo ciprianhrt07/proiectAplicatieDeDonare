@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de Inregistrare</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-6 col-md-offset-3">
+
+        <h1> Pagia de inregistrare</h1>
+        <form th:action="@{/register}" method="post" th:object="${donator}">
+
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid email !</div>
+            </div>
+
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Inregistrare cu succes, bine ati venit!</div>
+            </div>
+
+            <div>
+                <label for="firstName"> Nume Donator: </label> :
+                <input type="text" id="firstName" name="numeDonator" th:field="*{nume}"/>
+            </div>
+
+            <div>
+                <label for="lastName"> Prenume Donator:  </label> :
+                <input type="text" id="lastName" name="prenumeDonator"  th:field="*{prenume}"/>
+            </div>
+
+            <div>
+                <label for="grupaSanguina">Alegeti grupa de sange din urmatoarele variante:</label>
+
+                <select name="grupaSanguina" id="grupaSanguina" th:field="*{grupa}">
+
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+
+                </select>
+            </div>
+
+
+            <div>
+                <label for="city">Alegeti orasul din care faceti parte:</label>
+
+                <select id ="city" th:field="*{judet}">
+
+
+                    <option value = "Alba Iulia">Alba_Iulia</option>
+                    <option value="Arad">Arad</option>
+
+                    <option value="Arges">Arges</option>
+                    <option value="Bacau">Bacau</option>
+
+                    <option value="Bihor">Bihor</option>
+                    <option value="Bistrita-Nasaud">Bistrita_Nasaud</option>
+
+                    <option value="Botosani">Botosani</option>
+                    <option value="Brasov">Brasov</option>
+
+
+                    <option value="Braila">Braila</option>
+                    <option value="Bucuresti">Bucuresti</option>
+
+                    <option value="Caras-Severin">Caras_Severin</option>
+                    <option value="Cluj-Napoca">Cluj_Napoca</option>
+
+                    <option value="Constanta">Constanta</option>
+                    <option value="Covasna">Covasna</option>
+
+                    <option value="Calarasi">Calarasi</option>
+                    <option value="Dolj">Dolj</option>
+
+                    <option value="Dambovita">Dambovita</option>
+                    <option value="Galati">Galati</option>
+
+                    <option value="Giurdiu">Giurgiu</option>
+                    <option value="Gorj">Gorj</option>
+
+                    <option value="Harghita">Harghita</option>
+                    <option value="Hunedoara">Hunedoara</option>
+
+                    <option value="Ialomita">Ialomita</option>
+                    <option value="Iasi">Iasi</option>
+
+                    <option value="Ilfov">Ilfov</option>
+                    <option value="Maramures">Maramures</option>
+
+                    <option value="Mehedinti">Mehedinti</option>
+                    <option value="Mures">Mures</option>
+
+                    <option value="Neamt">Neamt</option>
+                    <option value="Olt">Olt</option>
+
+                    <option value="Prahova">Prahova</option>
+                    <option value="Satu Mare"> Satu_Mare</option>
+
+                    <option value="Sibiu">Sibiu</option>
+                    <option value="Suceava">Suceava</option>
+
+                    <option value="Salaj">Salaj</option>
+                    <option value="Teleorman">Teleorman</option>
+
+                    <option value="Timisoara">Timisoara</option>
+                    <option value="Tulcea">Tulcea</option>
+
+                    <option value="Vaslui">Vaslui</option>
+                    <option value="Vrancea">Vrancea</option>
+                    <option value="Valcea">Valcea</option>
+
+
+                </select>
+            </div>
+
+
+
+            <div>
+                <label for="emailAddress"> UserName Donator: </label> :
+                <input type="text" id="emailAddress" name="emailDonator"  th:field="*{username}"/>
+            </div>
+
+            <div>
+                <label for="password"> Parola Contului nou creat: </label> :
+                <input type="password" id="password" name="password" th:field="*{password}"/>
+
+            </div>
+
+
+            <div>
+                <input type="submit" id="login-submit" value="Trimite Formularul"/>
+
+            </div>
+
+            <div>
+                <b><a href="/" th:href="@{/login}">
+                   Revino la pagina anterioara...</a> </b>
+            </div>
+
+
+
+
+        </form>
+
+    </div>
+    </div>
+    </div>
+</body>
+</html>

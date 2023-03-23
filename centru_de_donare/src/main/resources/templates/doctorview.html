@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina Doctorului</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div modelAttribute="doctorCurent" th:object="${doctorCurent}">
+
+    <h1> Informatii generale despre cont:
+
+    </h1>
+
+    <h2> Nume: <b th:text="${doctorCurent.nume}"> </b></h2>
+
+    <h2> Prenume: <b th:text="${doctorCurent.prenume}"></b></h2>
+
+    <h2> Specializare: <b th:text="${doctorCurent.specializare}"> </b></h2>
+
+    <div modelAttribute="locatieCurenta" th:object="${locatieCurenta}">
+
+        <h2> Nume Locatie de Activitate: <b th:text="${locatieCurenta.nume}"> </b> </h2>
+
+        <h2> Nume Judet Locatie de Activitate: <b th:text="${locatieCurenta.judet}"> </b></h2>
+
+        <h2> Numele Strazii Locatiei de Activitate: <b th:text="${locatieCurenta.strada}"> </b></h2>
+
+    </div>
+
+    <h2> Username: <b th:text="${doctorCurent.username}"></b></h2>
+
+    <h2> Parola: <b th:text="${doctorCurent.password}"> </b></h2>
+
+</div>
+
+
+<br>
+
+<h1> Tabela Cu Programari: </h1>
+
+<table class = "table table-dark">
+    <thead>
+    <tr>
+        <th> Index</th>
+        <th> Data</th>
+        <th> Finalizare Programare? </th>
+        <th> ID_Donator</th>
+
+
+    </tr>
+    </thead>
+    <tr th:each="programare: ${allProgramari}">
+        <td th:text="${programare.id}"/>
+        <td th:text="${programare.date}"/>
+        <td th:text="${programare.status}"/>
+        <td th:text="${programare.donator}"/>
+        <td>
+
+            <form th:action="@{/doctor/modificaStarea/{id}(id=${programare.id})}" method="post">
+                <button>
+
+                    Modifica Starea Succes
+
+                </button>
+            </form>
+
+            <form th:action="@{/doctor/modificaStareaEsec/{id}(id=${programare.id})}" method="post">
+                <button>
+
+                    Modifica Starea Esec
+
+                </button>
+            </form>
+        </td>
+
+    </tr>
+
+    <tbody>
+
+
+    </tbody>
+</table>
+
+<div>
+    <b><a href="/logout">
+        Revino la pagina anterioara...
+    </a>
+    </b>
+</div>
+
+
+</body>
+</html>

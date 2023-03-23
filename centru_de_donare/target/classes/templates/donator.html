@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+</head>
+<body>
+<h1> Aceasta este pagina donatorului:</h1>
+
+<br>
+
+
+<div modelAttribute="donatorCurent" th:object="${donatorCurent}">
+
+    <h1> Informatii generale despre cont:
+
+
+    </h1>
+
+    <h2> Nume: <b th:text="${donatorCurent.nume}"> </b></h2>
+
+    <h2> Prenume: <b th:text="${donatorCurent.prenume}"></b></h2>
+
+    <h2> Judet: <b th:text="${donatorCurent.judet}"></b></h2>
+
+    <h2> Grupa de sange: <b th:text="${donatorCurent.grupa}"></b></h2>
+
+    <h2> Username: <b th:text="${donatorCurent.username}"></b></h2>
+
+    <h2> Parola: <b th:text="${donatorCurent.password}"> </b></h2>
+
+</div>
+
+
+<br>
+
+
+<h2> Vizualizare Centre pentru Programare</h2>
+
+<br>
+
+
+<table class = "table table-dark">
+
+    <thead>
+    <th>Nume Centru</th>
+
+    <th>
+        Numar Maxim De Programari
+    </th>
+
+    <th>Numar Programari Ramase</th>
+
+    <th>Nume Judet</th>
+
+    <th> Strada</th>
+
+    <th> Orar de functionare</th>
+
+    <th><b> Selectare ziua pentru programare: </b></th>
+
+
+    </thead>
+
+    <tbody>
+    <tr th:each="locatie:${allLocatii}">
+        <td th:text="${locatie.nume}"/>
+        <td th:text="${locatie.numarMaximProgramari}"/>
+        <td th:text="${locatie.numarProgramari}"/>
+        <td th:text="${locatie.judet}"/>
+        <td th:text="${locatie.strada}"/>
+        <td th:text="${locatie.orar}"/>
+        <td>
+            <form action="#" th:action="@{/submit/{id}(id = ${locatie.id})}" modelAttribute="date" th:object="${date}"
+                  method="post">
+                <input type="date" th:field="*{date}"/>
+                <button type="submit">Submit</button>
+            </form>
+
+        </td>
+
+    </tr>
+
+
+    </tbody>
+
+    </form>
+</table>
+
+<br>
+
+<div>
+
+    <h1> Lista programarilor curente:</h1>
+
+    <table class = "table table-dark">
+
+        <thead>
+        <th>Data Programare</th>
+
+        <th> Programare finalizata? </th>
+
+        <th> Programare anulata? </th>
+
+        <th> Incheie aceasta programare</th>
+        </thead>
+
+        <tbody>
+        <tr th:each="programare:${allProgramariInitiate}">
+            <td th:text="${programare.date}"/>
+            <td th:text="${programare.status}"/>
+            <td th:text="${programare.anulata}"/>
+            <form action="#" th:action="@{/donator/anuleaza/{id}(id = ${programare.id})}" method="post">
+                <td>
+                    <button> Anuleaza</button>
+                </td>
+            </form>
+        </tr>
+
+
+        </tbody>
+
+        </form>
+    </table>
+
+</div>
+
+<br>
+
+<div>
+    <h1> Lista programarilor anterioare: </h1>
+    <table class = "table table-dark">
+
+        <thead>
+        <th>Data Programare</th>
+
+        <th> Programare Finalizata? </th>
+
+        <th> Programare anulata?</th>
+
+        </thead>
+
+        <tbody>
+        <tr th:each="programare:${allProgramariFinalizate}">
+            <td th:text="${programare.date}"/>
+            <td th:text="${programare.status}"/>
+            <td th:text="${programare.anulata}"/>
+        </tr>
+
+
+        </tbody>
+
+        </form>
+    </table>
+
+</div>
+
+<div>
+    <h1> Date convertite:</h1>
+    <table class = "table table-dark">
+
+
+        <thead>
+        <th>Data Convertita</th>
+
+        </thead>
+
+        <tbody>
+        <tr th:each="programare:${allDates}">
+            <td th:text="${programare}"/>
+        </tr>
+
+
+        </tbody>
+
+        </form>
+    </table>
+</div>
+
+<br>
+
+<div modelAttribute="donatorCurent" th:object="${donatorCurent}">
+    <button><a href="/" th:href="@{/donator/edit/{id}(id = ${donatorCurent.id})}" method=get>
+        Redirectionare spre pagina de actualizare</a></button>
+</div>
+
+<br>
+
+<form action="#" th:action="@{/donator/delete/{id}(id = ${donatorCurent.id})}" method=post>
+
+    <div>
+        <button type="submit"><b>Sterge</b></button>
+    </div>
+
+</form>
+
+
+
+<br>
+
+<div >
+    <b><a href="/logout">
+        Revino la pagina anterioara...</a> </b>
+</div>
+
+</body>
+</html>

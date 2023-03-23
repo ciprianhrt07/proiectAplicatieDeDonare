@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Stuff</title>
+</head>
+<body>
+<h1> Pagina de inserare field-uri asociate doctorului:</h1>
+
+<form th:action="@{/doctor}" method="post" th:object="${doctor}">
+
+    <div th:if="${param.error}">
+        <div class="alert alert-danger">Invalid username !</div>
+    </div>
+
+    <!-- success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">Inregistrare cu succes, bine ati venit!</div>
+    </div>
+
+    <div>
+        <label for="firstName"> Nume Doctor: </label> :
+        <input type="text" id="firstName" name="numeDoctor" th:field="*{nume}"/>
+    </div>
+
+    <div>
+        <label for="lastName"> Prenume Doctor: </label> :
+        <input type="text" id="lastName" name="prenumeDoctor" th:field="*{prenume}"/>
+    </div>
+
+    <div>
+        <label for="specializare">Alegeti specializarea din urmatoarele variante: </label>
+
+        <select name="specializare" id="specializare" th:field="*{specializare}">
+
+            <option value="Cardiologie">Cardiologie</option>
+            <option value="Chirurgie Cardiovasculara">Chirurgie_Cardiovasculara</option>
+
+            <option value="Farmaceutica">Farmaceutica</option>
+            <option value="Asistent">Asistent_Medical</option>
+
+            <option value="Medicina de Urgenta">Medicina_de_Urgenta</option>
+            <option value="Reumatologie">Reumatologie</option>
+
+            <option value="Neurologie">Neurologie</option>
+            <option value="Neurochirurgie">Neurochirurgie</option>
+
+        </select>
+    </div>
+
+
+    <div>
+        <label for="emailAddress"> Email Doctor: </label> :
+        <input type="text" id="emailAddress" name="emailDonator" th:field="*{username}"/>
+    </div>
+
+    <div>
+        <label for="password"> Parola contului Doctorului nou creat: </label> :
+        <input type="password" id="password" name="password" th:field="*{password}"/>
+
+    </div>
+
+    <div>
+        <label for="locatie">Alegeti locatia din urmatoarele variante: </label>
+
+        <select id="locatie" name="locatie" th:field="*{locatie}">
+            <option th:each="locatie : ${allLocatii}"
+                    th:value="${locatie.id}"
+                    th:text="${locatie.id}+' : '+ ${locatie.nume}+' : '+${locatie.judet}"></option>
+        </select>
+    </div>
+
+
+
+
+    <div>
+        <input type="submit" id="login-submit" value="Trimite Formularul Pentru Doctor"/>
+
+    </div>
+
+    <div>
+        <b><a href="/" th:href="@{/admin}">
+            Revino la pagina anterioara...</a> </b>
+    </div>
+
+
+</form>
+
+</body>
+</html>
