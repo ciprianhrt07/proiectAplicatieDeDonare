@@ -28,6 +28,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
                                         Authentication authentication) throws IOException, ServletException {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
+        // vorbim cred că peste 2 laboratoare viitoare despre roluri si granturi, pls amintește-mi
         for (final GrantedAuthority grantedAuthority : authorities) {
             String authorityName = grantedAuthority.getAuthority();
             if (authorityName.equals("ROLE_ADMIN")) {
@@ -37,6 +38,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             }else
             if (authorityName.equals("ROLE_DOCTOR")) {
                 // if the user is an DOCTOR delegate to the adminSuccessHandler
+                // copy paste error? ^
                 this.doctorSuccessHandler.onAuthenticationSuccess(request, response, authentication);
                 return;
             }

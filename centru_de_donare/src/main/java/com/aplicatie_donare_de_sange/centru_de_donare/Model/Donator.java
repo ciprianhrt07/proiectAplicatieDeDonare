@@ -16,7 +16,7 @@ public class Donator extends User {
     private String prenume;
 
     @Column
-    private String grupa;
+    private String grupa; // enum?
 
     @Column
     private String judet;
@@ -24,7 +24,7 @@ public class Donator extends User {
     @OneToMany(
             mappedBy = "donator",
 
-            cascade = CascadeType.DETACH,
+            cascade = CascadeType.DETACH, // de ce ai ales să folosești detach?
 
             orphanRemoval = true
     )

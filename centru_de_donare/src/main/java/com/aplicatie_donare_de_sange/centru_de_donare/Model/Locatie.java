@@ -25,17 +25,21 @@ public class Locatie {
     private String orar;
 
     @Column(name = "numar_maxim_programari")
-    private int numarMaximProgramari;
+    private int numarMaximProgramari; // astea sunt per zi/ nu per "forever",  în fiecare zi au x locuri :D
 
     @Column(name = "numar_programari_ramase")
-    private int numarProgramari;
+    private int numarProgramari; // astea sunt per zi/ nu per "forever",  în fiecare zi au x locuri rămase. :D
+    // în mod normal se calculează câte locuri au rămas numărând câte programări s-au făcut in ziua X.
+    // poți să le stochezi în memorie în ideea în care vrei să eviți acel query
+    // dar asta înseamnă că vei avea o valoare de "nr programări rămase" pentru fiecare zi
 
     @OneToMany(
             mappedBy = "locatie",
 
             cascade = CascadeType.DETACH,
 
-            orphanRemoval = true
+            orphanRemoval = true // nu e greșit, dar mă gândesc într-un caz real
+            // dacă aș șterge doctorii din sistem dacă desființezi o locație
     )
     private List<Doctor> doctor = new ArrayList<>();
 

@@ -17,6 +17,7 @@ public class Doctor extends User{
       private String specializare;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.PERSIST)
+    // când salvezi un doctor, are sens să se creeze și locația?
     private Locatie locatie;
 
       public Doctor(String username , String password , String nume , String prenume , String specializare , Locatie locatie){

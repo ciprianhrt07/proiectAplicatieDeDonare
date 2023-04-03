@@ -23,6 +23,7 @@ public class ProgramariServiceImpl implements ProgramariService {
     @Override
     public Programare save(Donator donator, Locatie locatie, Date date) {
 
+        // next time, și logica de programare pls
         Programare programare = new Programare(date, locatie, donator);
         return programariRepository.save(programare);
 
