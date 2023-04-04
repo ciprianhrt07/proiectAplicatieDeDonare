@@ -20,6 +20,7 @@ public class HomeResource {
         return "redirect:/login";
     }
 
+    // rămășițe?
     @GetMapping("/user")
     public String homeUser(){
 

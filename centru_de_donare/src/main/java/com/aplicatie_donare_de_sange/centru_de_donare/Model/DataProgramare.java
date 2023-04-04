@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 
+// super, îmi place cum ai encpasulat! gg
 public class DataProgramare {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;

@@ -105,6 +105,7 @@ public class DonatorController {
         return "redirect:/donator";
     }
 
+    // nu l-aș pune în controller, unde crezi că ar merge mai bine?
     public List<String> formator(List<Programare> programari) throws ParseException {
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSS");
         DateFormat formatter1 = new SimpleDateFormat("dd-MM-yyyy");

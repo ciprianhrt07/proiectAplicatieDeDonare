@@ -43,6 +43,7 @@ public class DoctorController {
     @GetMapping("/doctor")
     public String doctorPage(Model model) {
 
+        // de ce e locatie un array de locații?
         List<Locatie> locatie = new ArrayList<>();
 
         List<Locatie> allLocatii = locatieService.getAllLocatii();

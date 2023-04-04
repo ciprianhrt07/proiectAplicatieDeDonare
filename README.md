@@ -8,5 +8,6 @@
       insert into application_users(user_type_id , active ,   password , role , username)
 values(1 ,  true , "admin", "ROLE_ADMIN" , "admin" ); 
   -> restul userilor se pot crea sterge sau adauga ulterior, doar adminul trebuie inserat manual.
-  GL , HF.
+  GL , HF. // thanks!
   -> username-ul trebuie sa fie diferit pentru orice utilizator.
+
